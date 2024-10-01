@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\DB_App.props" />
+</Project>

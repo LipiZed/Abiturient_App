@@ -1,0 +1,108 @@
+﻿@page
+@model DB_App.Pages.AdminModel
+@{
+    ViewData["Title"] = "Страница Администратора";
+}
+
+
+<!-- Отображение сообщения об успехе -->
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Message
+    </div>
+}
+
+<!-- Форма добавления факультета -->
+<h3>Добавить Факультет</h3>
+<form method="post" asp-page-handler="CreateFaculty">
+    <div class="form-group">
+        <label asp-for="@Model.Faculty.Name">Название Факультета</label>
+        <input asp-for="@Model.Faculty.Name" class="form-control" />
+        <span asp-validation-for="Faculty.Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-margin-top">Добавить Факультет</button>
+</form>
+
+<hr />
+
+<!-- Форма добавления экзамена -->
+<h3>Добавить Экзамен</h3>
+<form method="post" asp-page-handler="CreateExam">
+    <div class="form-group">
+        <label asp-for="Exam.ProgramId">ID Программы</label>
+        <input asp-for="@Model.Exam.ProgramId" class="form-control" />
+        <span asp-validation-for="Exam.ProgramId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Exam.ExamName">Название Экзамена</label>
+        <input asp-for="@Model.Exam.ExamName" class="form-control" />
+        <span asp-validation-for="Exam.ExamName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Exam.ExamDate">Дата Экзамена</label>
+        <input asp-for="@Model.Exam.ExamDate" class="form-control" type="date" />
+        <span asp-validation-for="Exam.ExamDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Exam.MaxScore">Максимальный Балл</label>
+        <input asp-for="@Model.Exam.MaxScore" class="form-control" />
+        <span asp-validation-for="Exam.MaxScore" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-margin-top">Добавить Экзамен</button>
+</form>
+
+<hr />
+
+<!-- Форма добавления члена комитета -->
+<h3>Добавить Члена Комитета</h3>
+<form method="post" asp-page-handler="CreateCommitteeMember">
+    <div class="form-group">
+        <label asp-for="CommitteeMember.Login">Логин</label>
+        <input asp-for="@Model.CommitteeMember.Login" class="form-control" />
+        <span asp-validation-for="CommitteeMember.Login" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CommitteeMember.Password">Пароль</label>
+        <input asp-for="@Model.CommitteeMember.Password" class="form-control" type="password" />
+        <span asp-validation-for="CommitteeMember.Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CommitteeMember.Role">Роль</label>
+        <input asp-for="@Model.CommitteeMember.Role" class="form-control" />
+        <span asp-validation-for="CommitteeMember.Role" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-margin-top">Добавить Члена Комитета</button>
+</form>
+
+<hr />
+
+<!-- Форма добавления программы -->
+<h3>Добавить Программу</h3>
+<form method="post" asp-page-handler="CreatePrograms">
+    <div class="form-group">
+        <label asp-for="Programs.Name">Название Программы</label>
+        <input asp-for="@Model.Programs.Name" class="form-control" />
+        <span asp-validation-for="Programs.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Programs.FacultyId">ID Факультета</label>
+        <input asp-for="@Model.Programs.FacultyId" class="form-control" />
+        <span asp-validation-for="Programs.FacultyId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Programs.Description">Описание</label>
+        <input asp-for="@Model.Programs.Description" class="form-control" />
+        <span asp-validation-for="Programs.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Programs.DurationYears">Продолжительность (в годах)</label>
+        <input asp-for="@Model.Programs.DurationYears" class="form-control" />
+        <span asp-validation-for="Programs.DurationYears" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-margin-top">Добавить Программу</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

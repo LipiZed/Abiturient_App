@@ -1,0 +1,29 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@model DB_App.Pages.WatcherModel
+@{
+    ViewData["Title"] = "Страница Наблюдателя";
+}
+
+
+<h3>Список Заявок</h3>
+
+@foreach (var application in Model.Applications)
+{
+    <div class="application-block">
+        <p><strong>Фамилия и Имя:</strong> @application.Applicant.LastName @application.Applicant.FirstName</p>
+        <p><strong>Дата заявки:</strong> @application.SubmissionDate.ToString("dd.MM.yyyy")</p>
+        <p><strong>Статус заявки:</strong> @application.Status.StatusName</p>
+        <hr />
+    </div>
+}
+
+<style>
+    .application-block {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>

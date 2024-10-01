@@ -1,0 +1,114 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@model DB_App.Pages.EditorModel
+@{
+    ViewData["Title"] = "Страница редактора";
+}
+
+
+<h3>Добавить Данные Заявителя, Экзамена и Документов</h3>
+
+<hr />
+<br />
+
+<form method="post" asp-page-handler="CreateFullEntry">
+    <!-- Секция для данных Заявителя -->
+    <div class="section">
+        <h4>Данные Заявителя</h4>
+        <div class="form-group">
+            <label asp-for="@Model.Applicant.FirstName">Имя</label>
+            <input asp-for="@Model.Applicant.FirstName" class="form-control" />
+            <span asp-validation-for="Applicant.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Applicant.LastName">Фамилия</label>
+            <input asp-for="@Model.Applicant.LastName" class="form-control" />
+            <span asp-validation-for="Applicant.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Applicant.DateOfBirth">Дата Рождения</label>
+            <input asp-for="@Model.Applicant.DateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="Applicant.DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Applicant.PhoneNumber">Телефон</label>
+            <input asp-for="@Model.Applicant.PhoneNumber" class="form-control" />
+            <span asp-validation-for="Applicant.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Applicant.Email">Электронная Почта</label>
+            <input asp-for="@Model.Applicant.Email" class="form-control" />
+            <span asp-validation-for="Applicant.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Applicant.RegistrationDate">Дата Регистрации</label>
+            <input asp-for="@Model.Applicant.RegistrationDate" class="form-control" type="date" />
+            <span asp-validation-for="Applicant.RegistrationDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- Секция для данных Заявки -->
+    <div class="section">
+        <h4>Данные Заявки</h4>
+        <div class="form-group">
+            <label asp-for="@Model.Application.ProgramId">ID Программы</label>
+            <input asp-for="@Model.Application.ProgramId" class="form-control" />
+            <span asp-validation-for="Application.ProgramId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Application.SubmissionDate">Дата Подачи Заявки</label>
+            <input asp-for="@Model.Application.SubmissionDate" class="form-control" type="date" />
+            <span asp-validation-for="Application.SubmissionDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Application.StatusId">ID Статуса</label>
+            <input asp-for="@Model.Application.StatusId" class="form-control" />
+            <span asp-validation-for="Application.StatusId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- Секция для данных Документов -->
+    <div class="section">
+        <h4>Документы</h4>
+        <div class="form-group">
+            <label asp-for="@Model.Document.DocumentType">Тип Документа</label>
+            <input asp-for="@Model.Document.DocumentType" class="form-control" />
+            <span asp-validation-for="Document.DocumentType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Document.DocumentPath">Путь к Документу</label>
+            <input asp-for="@Model.Document.DocumentPath" class="form-control" />
+            <span asp-validation-for="Document.DocumentPath" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Document.UploadDate">Дата Загрузки</label>
+            <input asp-for="@Model.Document.UploadDate" class="form-control" type="date" />
+            <span asp-validation-for="Document.UploadDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <hr />
+
+    <!-- Секция для данных Результатов Экзамена -->
+    <div class="section">
+        <h4>Результаты Экзамена</h4>
+        <div class="form-group">
+            <label asp-for="@Model.ExamResult.ExamId">ID Экзамена</label>
+            <input asp-for="@Model.ExamResult.ExamId" class="form-control" />
+            <span asp-validation-for="ExamResult.ExamId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.ExamResult.Score">Оценка</label>
+            <input asp-for="@Model.ExamResult.Score" class="form-control" />
+            <span asp-validation-for="ExamResult.Score" class="text-danger"></span>
+        </div>
+    </div>
+
+    <hr />
+
+    <button type="submit" class="btn btn-primary btn-margin-top">Сохранить Все Данные</button>
+</form>
